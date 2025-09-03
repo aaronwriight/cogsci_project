@@ -1,3 +1,5 @@
+#### ---- DEFAULT R .GITIGNORE CONFIGURATION (GITHUB) ---- ####
+
 # History files
 .Rhistory
 .Rapp.history
@@ -5,6 +7,7 @@
 # Session Data files
 .RData
 .RDataTmp
+.DS_Store
 
 # User-specific files
 .Ruserdata
@@ -47,3 +50,33 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+#### ---- DEFAULT R .GITIGNORE CONFIGURATION (POSITRON) ---- ####
+
+library/
+local/
+cellar/
+lock/
+python/
+sandbox/
+staging/
+
+#### ---- CUSTOM CONFIGURATION ---- ####
+
+# renv files
+renv/library/
+
+# markdown renderings
+*_files/
+README.html
+0*_*.html
+.renders/
+
+# private project folders and files <-  some too large
+/data/detail_all*.txt
+
+# folders produced from script (to save space)
+/viz/images/*/
+/results/stats/*model_stats/
+/results/tables/*/
+/.quarto/

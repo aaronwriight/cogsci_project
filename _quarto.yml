@@ -1,0 +1,37 @@
+project:
+  type: default
+  output-dir: .renders       # all final renders go here
+
+authors:
+  - name: "Aaron Wright"
+
+format:
+  html:
+    css: .styles/quarto_styles.css
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+  pdf:
+    include-in-header: .styles/quarto_styles.tex
+    toc: true
+    toc-depth: 2
+
+paths:
+  data: data
+  scripts: scripts
+  results:
+    statistics: results/stats
+    tables: results/tables
+  viz:
+    adobe_illustrator: viz/illustrator
+    plots_and_images: viz/images
+    posters: viz/presentation
+    publication_ready_figures: viz/figures
+  misc: misc
+
+execute:
+  echo: true
+  warning: false
+  message: true
+  error: false
+  cache: true

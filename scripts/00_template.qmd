@@ -1,0 +1,255 @@
+---
+title: "Extended Language Network | 02_stats"
+author: "Agata Wolna, Aaron Wright"
+date: "08-29-2025"
+format: html
+editor: visual
+---
+
+## Overview
+
+**Purpose**: run statistical models for gss and atlas parcels, and create counts of language-selective and language-responsive rois
+
+**Input(s)**: `detail_all.txt`, the main data table
+
+**Process**: run models for the gss n=772, gss n=86, and atlas parcels; describe the distribution of parcels; calculate roi sizes, and create tables of lang-selective and lang-responsive parcels
+
+**Output(s)**: restults/stats/`atlas_model_stats` | `gss_n772_model_stats` | `gss_n86_model_stats`: lists of model outputs and optional diagnostics; `atlas_lang_responsive_rois_names.txt` and `atlas_lang_selective_rois_names.txt`: descriptive tables for atlas parcels
+
+## Environment
+
+```{r}
+library(tidyverse)
+library(here)
+library(readxl)
+library(lmerTest)
+library(emmeans)
+
+source(here("scripts", "run_parcel_models.R"))
+```
+
+## Data
+
+```{r}
+# read in the data
+data_all <- read.delim(here("data", "detail_all.txt")) # ALL participants
+# data_all <- read.delim(here("data", "detail_all_old.txt")) # ALL participants (OLD values)
+```
+
+## Parcel stats
+
+Group-constrained specific-subject parcellation method (see Fedorenko et al., 2010 for a description of the approach).
+
+### Parcel model: gss parcels n=772 (full)
+
+```{r}
+#| eval: false
+# import GSS parcels
+gcssroi_excluded <- c(9, 29, 30, 31, 32, 33)
+dat_gcss <- data_all %>% 
+  mutate(condition = as.factor(condition), task = as.factor(task)) %>% 
+  filter(parcels =="GcSS", !(ROI %in% gcssroi_excluded))
+
+# run parcel model (gss, n=772)
+run_parcel_models(data_all,
+                  parcels_filter="GcSS",
+                  roi_exclude=c(9,29,30,31,32,33),
+                  target="gss_n772",
+                  diagnostics=TRUE)
+```
+
+### Parcel model: gss parcels n=86 (subset)
+
+```{r}
+#| eval: false
+# data, n checks
+data_all %>% select(Subject, task, localizer) %>% unique() %>% group_by(localizer, task) %>% count()
+data_all_uid <- data_all %>% filter(localizer!="Alice") %>% 
+  separate(Subject, into = "uid", sep = "_", remove = FALSE)
+data_all_uid %>% select(uid, task, localizer) %>% unique() %>% group_by(uid) %>% count() %>% 
+  group_by(n) %>% count()
+
+# subset list of participants having completed all three tasks
+subjects_all <- data_all_uid %>% select(uid, task, localizer) %>% unique() %>% mutate(compl=1) %>% 
+  pivot_wider(names_from = task, values_from = compl) %>% filter(Lang==1 & MD==1 & Alice == 1) %>% pull(uid)
+
+# run parcel model (gss, n=86)
+run_parcel_models(data_all,
+                  parcels_filter="GcSS",
+                  roi_exclude=c(9,29,30,31,32,33),
+                  subset_uids=subjects_all,
+                  target="gss_n86",
+                  diagnostics=TRUE)
+```
+
+### Parcel model: atlas parcels
+
+```{r}
+#| eval: false
+# atlas data
+dat_atlas <- data_all %>% 
+  mutate(condition = as.factor(condition), task=as.factor(task)) %>% 
+  filter(parcels !="GcSS", !is.na(ROI))
+
+# run parcel model (atlas)
+atlas_parcels <- c("DKT","Glasser","HOCortical","HOSubcortical")
+run_parcel_models(data_all,
+                  parcels_filter=atlas_parcels,
+                  target="atlas",
+                  diagnostics=FALSE)
+```
+
+## Parcel tables
+
+### Atlas data
+
+```{r}
+# read in the data
+atlas_roi_models_pairwise_maineffects <- read.table(here("results", "stats", "atlas_model_stats", "atlas_roi_models_pairwise_maineffects.txt"), sep = "\t", header = T) %>% as_tibble()
+atlas_roi_models_pairwise_conditions <- read.table(here("results", "stats", "atlas_model_stats", "atlas_roi_models_pairwise_conditions.txt"), sep = "\t", header = T) %>% as_tibble()
+atlas_roi_models_pairwise_tasks <- read.table(here("results", "stats", "atlas_model_stats", "atlas_roi_models_pairwise_tasks.txt"), sep = "\t", header = T) %>% as_tibble()
+```
+
+
+### Language-selective and language-responsive ROIs
+
+-   Responsive parcels - S\>N, I\>D
+
+    -   Responsive parcels show a significant difference in activation in the critical task condition, relative to its baseline.
+
+-   Selective parcels - S\>H, I\>H
+
+    -   Selective parcels, in addition to meeting the criteria for responsiveness, show a significant difference in activation in the critical language task conditions over the critical working memory condition.
+
+```{r}
+# get a list of language-responsive ROIs (significant S>N and I>D effect, S and I greater than 0)
+
+## which ROIs show response to S and I significantly greater than 0?
+maineffects_rois <- atlas_roi_models_pairwise_maineffects %>% 
+  separate(contrast, into=c("task", "effect")) %>% 
+  as_tibble() %>% 
+  filter(effect=="critical", task!="MD", estimate>0, p_value<0.05) %>% 
+  group_by(roi, atlas) %>% 
+  count() %>% 
+  filter(n==2) %>%
+  mutate(maineffect = 1) %>% 
+  select(-n) 
+
+## which ROIs also show a significant contrast between language conditions?
+lang_responsive_rois <- atlas_roi_models_pairwise_conditions %>% 
+  separate(contrast, into=c("task")) %>% 
+  as_tibble() %>% 
+  filter(task!="MD", p_value<0.05) %>%
+  group_by(roi, atlas) %>%
+  count() %>%
+  filter(n==2) %>%
+  select(-n) %>% 
+  left_join(maineffects_rois) %>%
+  filter(!is.na(maineffect)) %>% 
+  select(-maineffect) %>%
+  unique() 
+
+## which ROIs are language-selective (S>H and I>H)?
+lang_selective_rois <- atlas_roi_models_pairwise_tasks %>%
+  separate(contrast, into=c("task1", "task2"), sep = " vs. ") %>%
+  as_tibble() %>%
+  filter(task2 == "criticalMD", estimate>0, p_value<0.05) %>%
+  group_by(roi, atlas) %>%
+  count() %>% 
+  filter(n == 2) %>%
+  select(-n) %>%
+  mutate(selective = 1) 
+
+# which of the language-responsive ROIs are also language-selective?
+lang_selective_rois <- lang_responsive_rois %>%
+  left_join(lang_selective_rois) %>%
+  filter(!is.na(selective)) %>%
+  select(-selective)
+
+## sanity check: counts of selective and responsive ROIs by atlas:
+lang_responsive_rois %>% group_by(atlas) %>% count()
+lang_selective_rois %>% group_by(atlas) %>% count()
+
+## get parcels names
+dktnames <- read_excel(here("data", "AtlasParcels.xlsx"), sheet="DKT") %>% rename(roi=ROI) %>% select(roi, hemi, ROIName) %>% mutate(atlas="DKT")
+hocnames=read_excel(here("data", "AtlasParcels.xlsx"), sheet="HOCortical") %>% rename(roi=ROI) %>% select(roi, hemi, ROIName) %>% mutate(atlas="HOCortical")
+hosubnames <- read_excel(here("data", "AtlasParcels.xlsx"), sheet="HOSubcortical") %>% rename(roi=ROI) %>% select(roi, hemi, ROIName) %>% mutate(atlas="HOSubcortical")
+glassernames <- read_excel(here("data", "AtlasParcels.xlsx"), sheet="Glasser") %>% rename(roi=ROI) %>% select(roi, hemi, ROIName) %>% mutate(atlas="Glasser")
+
+names=rbind(dktnames, hocnames, hosubnames, glassernames)
+
+lang_selective_rois <- lang_selective_rois %>% left_join(names) %>% unique()
+lang_responsive_rois <- lang_responsive_rois %>% left_join(names) %>% unique()
+
+# number of parcels by atlas and hemisphere
+lang_responsive_rois %>% group_by(atlas, hemi) %>% count()
+lang_selective_rois %>% group_by(atlas, hemi) %>% count()
+```
+
+### GSS parcels size
+
+```{r}
+gss_size <- read_excel(here("data", "TableResults.xlsx"), sheet="GcSS_ROI_Size_0.001")
+
+selective=c(1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 16, 18, 20, 21, 22, 23, 24, 25, 28)
+core=c(1, 2, 3, 6, 11)
+
+## Size selective
+gss_size %>% filter(ROI%in%selective) %>% group_by(Subject) %>% 
+  summarize(LangSelectiveSize = sum(LocalizerSize)) %>% ungroup() %>% 
+  summarize(meanSize=mean(LangSelectiveSize), sd=sd(LangSelectiveSize)) %>% 
+  mutate(size_cm3=(meanSize*8)/1000, sd_cm3=(sd*8)/1000)
+
+gss_size %>% filter(ROI%in%selective) %>% group_by(Subject) %>% 
+  summarize(LangSelectiveSize = sum(LocalizerSize)) %>% ungroup() %>% 
+  ggplot(aes(x = LangSelectiveSize)) + geom_histogram()
+
+## Size core
+gss_size %>% filter(ROI%in%core) %>% group_by(Subject) %>% 
+  summarize(LangCoreSize = sum(LocalizerSize)) %>% ungroup() %>% 
+  summarize(meanSize=mean(LangCoreSize), sd=sd(LangCoreSize)) %>% 
+  mutate(size_cm3=(meanSize*8)/1000, sd_cm3=(sd*8)/1000)
+
+gss_size %>% filter(ROI%in%core) %>% group_by(Subject) %>% 
+  summarize(LangCoreSize = sum(LocalizerSize)) %>% ungroup() %>% 
+  ggplot(aes(x = LangCoreSize)) + geom_histogram()
+```
+
+### Atlas_parcels data frame
+
+```{r}
+#| eval: false
+# read and combine all atlas sheets into one data frame
+atlas_parcels <- bind_rows(
+  
+  read_excel(here("data", "AtlasParcels.xlsx"), sheet = "DKT") %>%
+    rename(roi = ROI) %>%
+    mutate(atlas = "DKT") %>%
+    select(atlas, roi, lobe, hemi, ROIName),
+  
+  read_excel(here("data", "AtlasParcels.xlsx"), sheet = "HOCortical") %>%
+    rename(roi = ROI) %>%
+    mutate(atlas = "HOCortical") %>%
+    select(atlas, roi, lobe, hemi, ROIName),
+  
+  read_excel(here("data", "AtlasParcels.xlsx"), sheet = "HOSubcortical") %>%
+    rename(roi = ROI) %>%
+    mutate(atlas = "HOSubcortical",
+           hemi = case_when(ROIName == "Brain-Stem" ~ NA_character_, TRUE ~ hemi),  # change brain stem hemi value to NA
+           lobe = NA) %>%
+    select(atlas, roi, lobe, hemi, ROIName),
+  
+  read_excel(here("data", "AtlasParcels.xlsx"), sheet = "Glasser") %>%
+    rename(roi = ROI) %>%
+    mutate(atlas = "Glasser") %>%
+    select(atlas, roi, lobe, hemi, ROIName)
+)
+
+# define responsive and selective rois
+lang_responsive_rois <-  lang_responsive_rois %>% left_join(atlas_parcels) %>% distinct()
+lang_selective_rois <-  lang_selective_rois %>% left_join(atlas_parcels) %>% distinct()
+
+# write tables
+write.table(lang_responsive_rois, here("results", "tables", "atlas_lang_responsive_rois_names.txt"), sep = "\t", row.names = F, quote = F)
+write.table(lang_selective_rois, here("results", "tables", "atlas_lang_selective_rois_names.txt"), sep = "\t", row.names = F, quote = F)
+```

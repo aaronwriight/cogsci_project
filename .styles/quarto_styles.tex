@@ -1,0 +1,12 @@
+% quarto_styles.css — for Quarto HTML rendering
+
+\usepackage{xcolor}
+\definecolor{solarizedgreen}{HTML}{859901}
+\definecolor{solarizedcyan}{HTML}{2AA198}
+
+% Highlighting for code chunks (texttt is used for code in LaTeX)
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{\textcolor{solarizedgreen}{\oldtexttt{#1}}}
+
+% Hyperlink styling for PDF
+\usepackage[colorlinks=true, linkcolor=solarizedcyan, urlcolor=solarizedcyan, citecolor=solarizedcyan]{hyperref}
