@@ -29,6 +29,7 @@ To recreate the exact environment used in the project, run:
 3.  Update dependencies using:
 
     ``` bash
+    chmod +x env/update-dev.sh
     ./update-dev.sh [R | Python] [refresh--true|refresh--false]
     ```
 
@@ -70,7 +71,7 @@ cogsci_project/
 ...
 ```
 
-** Key directories: **
+**Key directories:**
 
 [data](./data): Contains raw data files that are used for inferential and descriptive statistical analyses.
 
@@ -97,7 +98,7 @@ Tags: `cognitive science`, `neuroscience`
 If you use this repository or data, please cite:
 
 ```         
-@article{YourCitation2024,
+@article{AuthorLastNameYear,
   bibtex_show = {true},
   title = {project title here},
   author = {author name(s) here},
