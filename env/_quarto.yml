@@ -30,8 +30,9 @@ paths:
   misc: misc
 
 execute:
+  eval: true        # ensure MATLAB chunks are executed
+  cache: true      # set to false for scripts using jupyter/mkernel to avoid .quarto_ipynb missing errors
   echo: true
   warning: false
   message: true
   error: false
-  cache: true

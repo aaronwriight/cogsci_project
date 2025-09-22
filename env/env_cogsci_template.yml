@@ -1,0 +1,37 @@
+name: cogsci-template
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # core python
+  - python=3.11
+  - pip
+
+  # data wrangling & stats
+  - numpy
+  - pandas
+  - scipy
+  - statsmodels
+
+  # visualization
+  - matplotlib
+  - seaborn
+
+  # machine learning
+  - scikit-learn
+
+  # jupyter ecosystem
+  - jupyterlab
+  - ipykernel
+  - nb_conda_kernels
+
+  # neuroimaging (optional, comment out if not needed)
+  - nilearn
+  - nibabel
+
+  # pip dependencies
+  - pip:
+      # tidyverse-like in python
+      - tidypandas
+      # notebook formatting / reporting
+      - jupyterlab-quarto

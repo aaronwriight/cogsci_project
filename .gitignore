@@ -63,20 +63,21 @@ staging/
 
 #### ---- CUSTOM CONFIGURATION ---- ####
 
+# OSF files
+/osf/
+
 # renv files
 renv/library/
 
-# markdown renderings
+# renderings
+*.ipynb_checkpoints
 *_files/
 README.html
 0*_*.html
 .renders/
 
-# private project folders and files <-  some too large
-/data/detail_all*.txt
-
 # folders produced from script (to save space)
 /viz/images/*/
-/results/stats/*model_stats/
+/results/stats/*/
 /results/tables/*/
 /.quarto/

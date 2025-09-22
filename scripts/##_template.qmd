@@ -1,0 +1,45 @@
+---
+title: "CogSci Project Script | ##_template"
+author: "Aaron Wright [`aawva@mit.edu`]"
+date: "MM-DD-YYYY"
+format: html
+editor: visual
+---
+
+## Overview
+
+A short, high-level description of this script
+
+**Purpose**: goal of script
+
+**Input(s)**: files utilized by script
+
+**Process**: pipeline followed in script
+
+**Output(s)**: files produced by script and descriptions
+
+## Environment
+
+Load dependencies
+
+```{r}
+# load dependencies
+library(tidyverse)
+library(here)
+```
+
+## Data
+
+Read in the data
+
+```{r}
+# read in the data
+```
+
+## Script
+
+Write script below
+
+```{r}
+# script
+```
