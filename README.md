@@ -4,11 +4,11 @@ This is a structured template for organizing and managing cognitive science proj
 
 ## Project configuration & environment
 
-**R**: The environment is an R 4.4.1 environment that makes use of [Tidyverse packages](https://www.tidyverse.org/packages/), [{renv}](https://rstudio.github.io/renv/), and [{here}](https://here.r-lib.org).
+**R**: The environment is an R 4.4.1 environment that makes use of [Tidyverse packages](https://www.tidyverse.org/packages/), [{renv}](https://rstudio.github.io/renv/), and [{here}](https://here.r-lib.org), and all dependencies are listed in the `renv.lock` file.
 
-**Python**: Python environment management is handled via conda. The environment uses Python 3.11, and all dependencies are listed in the `env/env_cogsci_template.yml file`. To ensure reproducibility, recreate the environment exactly as defined below, using the provided `setup-dev.sh` script, or manually via shell commands.
+**Python**: Python environment management is handled via conda. The environment uses Python 3.11, and all dependencies are listed in the `env/env_cogsci_template.yml file`. 
 
-To get started using this repository, follow these steps:
+To ensure reproducibility, the `setup-dev.sh` and `update-dev.sh` scripts are provided to help recreate exact environments. Alternatively, manually and update R or Python environments via shell commands. To get started using this repository, follow these steps:
 
 1.  Clone the repository:
 
