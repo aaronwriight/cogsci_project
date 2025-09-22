@@ -25,6 +25,9 @@ To recreate the exact environment used in the project, run:
     chmod +x env/setup-dev.sh
     env/setup-dev.sh [R | Python]
     ```
+These scripts will install/ dependencies based on the `renv.lock` or `env_cogsci_template_.yml` file and configure your environment accordingly. Alternatively, install the environments manually:
+- For R: Open R and run `renv::restore()`
+- For Python: Run `conda env create -f env/env_cogsci_template.yml` and activate with `conda activate cogsci_template`
 
 3.  Update dependencies using:
 
@@ -32,10 +35,6 @@ To recreate the exact environment used in the project, run:
     chmod +x env/update-dev.sh
     env/update-dev.sh [R | Python] [refresh--true|refresh--false]
     ```
-
-This script will install dependencies based on the `renv.lock` or `environment.yml` file and configure your environment accordingly. Alternatively, install the environments manually:
-- For R: Open R and run `renv::restore()`
-- For Python: Run `conda env create -f env/env_cogsci_template.yml` and activate with `conda activate cogsci_template`
 
 4.  Open the project file in your IDE (e.g., RStudio | VS Code | Positron) and begin exploring or running the code.
 
@@ -77,6 +76,8 @@ cogsci_project/
 
 [data](./data): Contains raw data files that are used for inferential and descriptive statistical analyses.
 
+[env](./env): Contains environment configuration files and scripts for setting up and updating the development environment. Key files include `env_cogsci_template.yml` (conda environment file), `setup-dev.sh` (development setup script), and `update-dev.sh` (dependency update script).
+
 [misc](./misc): Contains miscellaneous files and resources consulted throughout the project.
 
 [results](./results): Contains stats and tables produced during analyses. Recommended subfolders include `osf` (hand-picked files for OSF repository), `stats` (statistical outputs), and `tables` (descriptive outputs).
@@ -87,11 +88,11 @@ cogsci_project/
 
 ## Project notebook
 
-A comprehensive supplemental notebook including useful, high-level and technical information related to project conception, data collection, writing, variables of interest, and other collaborative measures is available here: [insert link here].
+A comprehensive supplemental notebook including useful, high-level and technical information related to project conception, data collection, writing, variables of interest, and other collaborative measures is available here: [`insert link here`].
 
 ## OSF
 
-A public-access mirror of this repository containing a subset of files necessary for reproduction is available at: [insert link here].
+A public-access mirror of this repository containing a subset of files necessary for reproduction is available at: [`insert link here`].
 
 Tags: `cognitive science`, `neuroscience`
 
