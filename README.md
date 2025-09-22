@@ -1,14 +1,14 @@
 ## Cognitive Science Project Template
 
-This repository contains code and data accompanying a cognitive science project.
+This is a structured template for organizing and managing cognitive science projects. It includes a clear directory structure, environment setup scripts, and guidelines for reproducibility.
 
 ## Project configuration & environment
 
 The environment is an R 4.4.1 environment that makes use of [Tidyverse packages](https://www.tidyverse.org/packages/), [{renv}](https://rstudio.github.io/renv/), and [{here}](https://here.r-lib.org).
 
-Python environment management is handled via conda and dependencies are listed in `environment.yml`.
+Python environment management is handled via conda and dependencies are listed in the `env_cogsci_template.yml` file.
 
-To get started:
+To get started using this repository, follow these steps:
 
 1.  Clone the repository:
 
