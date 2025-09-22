@@ -91,7 +91,7 @@ cogsci_project/
 
 A comprehensive supplemental notebook including useful, high-level and technical information related to project conception, data collection, writing, variables of interest, and other collaborative measures is available here: [`insert link here`].
 
-## OSF
+## Public access
 
 A public-access mirror of this repository containing a subset of files necessary for reproduction is available at: [`insert link here`].
 
