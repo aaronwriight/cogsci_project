@@ -12,10 +12,10 @@ To ensure reproducibility, the `setup-dev.sh` and `update-dev.sh` scripts are pr
 
 1.  Clone the repository:
 
-    ``` bash
-    git clone https://github.com/aaronwriight/cogsci_project
-    cd cogsci_project
-    ```
+``` bash
+git clone https://github.com/aaronwriight/cogsci_project
+cd cogsci_project
+```
 
 To recreate the exact environment used in the project, run:
 
@@ -32,10 +32,10 @@ These scripts will install/ dependencies based on the `renv.lock` or `env_cogsci
 
 3.  Update dependencies using:
 
-    ``` bash
-    chmod +x env/update-dev.sh
-    env/update-dev.sh [R | Python] [refresh--true|refresh--false]
-    ```
+``` bash
+chmod +x env/update-dev.sh
+env/update-dev.sh [R | Python] [refresh--true|refresh--false]
+```
 
 4.  Open the project file in your IDE (e.g., RStudio | VS Code | Positron) and begin exploring or running the code.
 
