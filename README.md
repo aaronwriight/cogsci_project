@@ -34,9 +34,8 @@ To recreate the exact environment used in the project, run:
     ```
 
 This script will install dependencies based on the `renv.lock` or `environment.yml` file and configure your environment accordingly. Alternatively, install the environments manually:
-
-    - For R: Open R and run `renv::restore()`
-    - For Python: Run `conda env create -f env/env_cogsci_template.yml` and activate with `conda activate cogsci_template`
+- For R: Open R and run `renv::restore()`
+- For Python: Run `conda env create -f env/env_cogsci_template.yml` and activate with `conda activate cogsci_template`
 
 4.  Open the project file in your IDE (e.g., RStudio | VS Code | Positron) and begin exploring or running the code.
 
