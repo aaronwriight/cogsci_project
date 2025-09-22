@@ -4,9 +4,9 @@ This is a structured template for organizing and managing cognitive science proj
 
 ## Project configuration & environment
 
-The environment is an R 4.4.1 environment that makes use of [Tidyverse packages](https://www.tidyverse.org/packages/), [{renv}](https://rstudio.github.io/renv/), and [{here}](https://here.r-lib.org).
+**R**: The environment is an R 4.4.1 environment that makes use of [Tidyverse packages](https://www.tidyverse.org/packages/), [{renv}](https://rstudio.github.io/renv/), and [{here}](https://here.r-lib.org).
 
-Python environment management is handled via conda and dependencies are listed in the `env_cogsci_template.yml` file.
+**Python**: Python environment management is handled via conda and dependencies are listed in the `env_cogsci_template.yml` file.
 
 To get started using this repository, follow these steps:
 
@@ -23,17 +23,20 @@ To recreate the exact environment used in the project, run:
 
     ``` bash
     chmod +x env/setup-dev.sh
-    ./env/setup-dev.sh [R | Python]
+    env/setup-dev.sh [R | Python]
     ```
 
 3.  Update dependencies using:
 
     ``` bash
     chmod +x env/update-dev.sh
-    ./update-dev.sh [R | Python] [refresh--true|refresh--false]
+    env/update-dev.sh [R | Python] [refresh--true|refresh--false]
     ```
 
-This script will install dependencies based on the `renv.lock` or `environment.yml` file and configure your environment accordingly.
+This script will install dependencies based on the `renv.lock` or `environment.yml` file and configure your environment accordingly. Alternatively, install the environments manually:
+
+    - For R: Open R and run `renv::restore()`
+    - For Python: Run `conda env create -f env/env_cogsci_template.yml` and activate with `conda activate cogsci_template`
 
 4.  Open the project file in your IDE (e.g., RStudio | VS Code | Positron) and begin exploring or running the code.
 

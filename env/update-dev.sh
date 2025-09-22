@@ -23,7 +23,7 @@ if [ "$mode" = "R" ]; then
 
   echo "R environment snapshot complete."
 
-elif [ "$mode" = "python" ]; then
+elif [ "$mode" = "Python" ]; then
   echo "setting up Python conda environment..."
 
   if ! command -v conda &> /dev/null; then
@@ -46,6 +46,6 @@ elif [ "$mode" = "python" ]; then
   conda env export --from-history > env/env_cogsci_template.yml
 
 else
-  echo "usage: $0 [R|python] [refresh--true|refresh--false]"
+  echo "usage: $0 [R | Python] [refresh--true | refresh--false]"
   exit 1
 fi

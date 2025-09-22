@@ -35,7 +35,7 @@ if [ "$mode" = "R" ]; then
 
   echo "R environment setup complete."
 
-elif [ "$mode" = "python" ]; then
+elif [ "$mode" = "Python" ]; then
   echo "setting up Python environment..."
 
   # check if conda is installed
@@ -52,6 +52,6 @@ elif [ "$mode" = "python" ]; then
   echo "Python environment setup complete."
 
 else
-  echo "usage: $0 [R|python]"
+  echo "usage: $0 [R | Python]"
   exit 1
 fi
