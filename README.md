@@ -21,10 +21,11 @@ To recreate the exact environment used in the project, run:
 
 2.  Run the setup script:
 
-    ``` bash
-    chmod +x env/setup-dev.sh
-    env/setup-dev.sh [R | Python]
-    ```
+``` bash
+chmod +x env/setup-dev.sh
+env/setup-dev.sh [R | Python]
+```
+
 These scripts will install/ dependencies based on the `renv.lock` or `env_cogsci_template_.yml` file and configure your environment accordingly. Alternatively, install the environments manually:
 - For R: Open R and run `renv::restore()`
 - For Python: Run `conda env create -f env/env_cogsci_template.yml` and activate with `conda activate cogsci_template`
