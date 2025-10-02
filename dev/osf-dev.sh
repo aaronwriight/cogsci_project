@@ -22,19 +22,15 @@ if [ ! -d "$DEST" ]; then
     exit 1
 fi
 
-# make sure we're copying into the root of the -osf repo
-DEST_OSF="$DEST/osf"
-mkdir -p "$DEST_OSF"
-
-echo "syncing $SRC -> $DEST_OSF"
+echo "syncing $SRC -> $DEST"
 
 # choose mode: -L follows symlinks (dereference), no -L preserves them
 # uncomment ONE of the following rsync commands:
 
 # 1. follow symlinks (actual files copied, recommended for OSF)
-rsync -avh --delete -L "$SRC"/ "$DEST_OSF"/
+rsync -avh --delete -L "$SRC"/ "$DEST"/
 
 # 2. keep symlinks as symlinks
-# rsync -avh --delete "$SRC"/ "$DEST_OSF"/
+# rsync -avh --delete "$SRC"/ "$DEST"/
 
 echo "done!"
