@@ -7,12 +7,12 @@ authors:
 
 format:
   html:
-    css: .styles/quarto_styles.css
+    css: ../.styles/quarto_styles.css
     toc: true
     toc-depth: 2
     theme: cosmo
   pdf:
-    include-in-header: .styles/quarto_styles.tex
+    include-in-header: ../.styles/quarto_styles.tex
     toc: true
     toc-depth: 2
 
