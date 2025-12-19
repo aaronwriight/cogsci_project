@@ -49,16 +49,16 @@ The repository is structured to facilitate organization and reproducibility. The
 cogsci_project/
 ├── cogsci_project.Rproj              # R project file
 ├── data                              # raw data input to scripts
-├── dev/                                        # developmental/set-up scripts
+├── dev/                              # developmental/set-up scripts
 │   ├── env_cogsci_template.yml       # conda environment file
-│   ├── osf-dev.sh                              # bash script to locally clone a subset of the repo into a new repo (see OSF desc.)
-│   ├── osf.txt                                 # text file specifying files to be used by osf-dev.sh
-│   ├── setup-dev.sh                            # bash script to replicate project environment (R or python)
-│   └── update-dev.sh                           # bash script to update project environment (R or python) 
+│   ├── osf-dev.sh                    # bash script to locally clone a subset of the repo into a new repo (see OSF desc.)
+│   ├── osf.txt                       # text file specifying files to be used by osf-dev.sh
+│   ├── setup-dev.sh                  # bash script to replicate project environment (R or python)
+│   └── update-dev.sh                 # bash script to update project environment (R or python) 
 ├── .gitignore
 ├── misc                              # miscellaneous resources
-├── osf/			      # hand-picked files for OSF repository (use with osf-dev.sh)
-├── _quarto.yml                   # Quarto configuration file
+├── osf/			                        # hand-picked files for OSF repository (use with osf-dev.sh)
+├── _quarto.yml                       # Quarto configuration file
 ├── README.md
 ├── renv/                             # R environment directory
 ├── renv.lock                         # R package lockfile
