@@ -23,7 +23,7 @@ To recreate the exact environment used in the project, run:
 
 ``` bash
 chmod +x env/setup-dev.sh
-env/setup-dev.sh [R | Python]
+dev/setup-dev.sh [R | Python]
 ```
 
 These scripts will install/ dependencies based on the `renv.lock` or `env_cogsci_template_.yml` file and configure your environment accordingly. Alternatively, install the environments manually:
@@ -34,7 +34,7 @@ These scripts will install/ dependencies based on the `renv.lock` or `env_cogsci
 
 ``` bash
 chmod +x env/update-dev.sh
-env/update-dev.sh [R | Python] [refresh--true|refresh--false]
+dev/update-dev.sh [R | Python] [refresh--true | refresh--false]
 ```
 
 4.  Open the project file in your IDE (e.g., RStudio | VS Code | Positron) and begin exploring or running the code.
