@@ -1,6 +1,6 @@
 ## Cognitive Science Project Template
 
-This is a structured template for organizing and managing cognitive science projects. It includes a clear directory structure, environment setup scripts, and guidelines for reproducibility.
+This is a minimal, structured template for organizing and managing cognitive science projects. It includes a clear directory structure, environment setup scripts, and guidelines for reproducibility.
 
 ## Project configuration & environment
 
@@ -49,15 +49,16 @@ The repository is structured to facilitate organization and reproducibility. The
 cogsci_project/
 ├── cogsci_project.Rproj              # R project file
 ├── data                              # raw data input to scripts
-├── dev                               # development and environment configuration scripts
+├── dev/                                        # developmental/set-up scripts
 │   ├── env_cogsci_template.yml       # conda environment file
-│   ├── osf-dev.sh                    # osf configuration script
-│   ├── _quarto.yml                   # Quarto configuration file
-│   ├── setup-dev.sh                  # development setup script
-│   └── update-dev.sh                 # dependency update script    
+│   ├── osf-dev.sh                              # bash script to locally clone a subset of the repo into a new repo (see OSF desc.)
+│   ├── osf.txt                                 # text file specifying files to be used by osf-dev.sh
+│   ├── setup-dev.sh                            # bash script to replicate project environment (R or python)
+│   └── update-dev.sh                           # bash script to update project environment (R or python) 
 ├── .gitignore
 ├── misc                              # miscellaneous resources
 ├── osf/			      # hand-picked files for OSF repository (use with osf-dev.sh)
+├── _quarto.yml                   # Quarto configuration file
 ├── README.md
 ├── renv/                             # R environment directory
 ├── renv.lock                         # R package lockfile

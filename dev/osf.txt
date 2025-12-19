@@ -1,0 +1,32 @@
+# files to be included on OSF repo – read by dev-osf.sh
+# osf repo has a .git/ folder that will not be overwritten when running dev-osf.sh
+
+# project - config
+extended_language_network.Rproj
+LICENSE
+README.md
+README-OSF.md
+renv.lock
+.Rprofile
+_quarto.yml
+
+# .styles - rendering
+.styles/*
+
+# .gitignore
+.gitignore
+
+# data
+
+# dev
+dev/setup-dev.sh
+dev/update-dev.sh
+
+# renv
+renv/*
+
+# results
+
+# scripts
+
+# viz
