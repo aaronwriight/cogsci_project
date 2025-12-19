@@ -57,7 +57,7 @@ cogsci_project/
 │   └── update-dev.sh                 # bash script to update project environment (R or python) 
 ├── .gitignore
 ├── misc                              # miscellaneous resources
-├── osf/			                        # hand-picked files for OSF repository (use with osf-dev.sh)
+├── osf/                              # hand-picked files for OSF repository (use with osf-dev.sh)
 ├── _quarto.yml                       # Quarto configuration file
 ├── README.md
 ├── renv/                             # R environment directory
