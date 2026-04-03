@@ -4,9 +4,9 @@ This is a minimal, structured template for organizing and managing cognitive sci
 
 <details>
 
-<summary>Project configuration & environment</summary>
-
 ## Project configuration & environment
+
+<summary>Toggle</summary>
 
 **R**: The environment is an R 4.4.1 environment that makes use of [Tidyverse packages](https://www.tidyverse.org/packages/), [{renv}](https://rstudio.github.io/renv/), and [{here}](https://here.r-lib.org), and all dependencies are listed in the `renv.lock` file.
 
@@ -44,7 +44,11 @@ dev/update-dev.sh [R | Python] [refresh--true | refresh--false]
 4.  Open the project file in your IDE (e.g., RStudio | VS Code | Positron) and begin exploring or running the code.
 </details>
 
+<details>
+
 ## Repository structure & pipeline
+
+<summary>Toggle</summary>
 
 The repository is structured to facilitate organization and reproducibility. The following is a suggested directory structure.
 
@@ -93,18 +97,33 @@ cogsci_project/
 [scripts](./scripts): Contains scripts (mostly .qmd files) that perform specific analyses or modular steps within the project pipeline.
 
 [viz](./viz): Contains automatically and manually produced visualizations (images/plots, figures). Recommended subfolders include `figures` (publication-ready figures), `illustrator` (Adobe Illustrator files), and `images` (plots/images produced by scripts).
+</details>
+
+<details>
 
 ## Project notebook
 
+<summary>Toggle</summary>
+
 A comprehensive supplemental notebook including useful, high-level and technical information related to project conception, data collection, writing, variables of interest, and other collaborative measures is available here: [`insert link here`].
+</details>
+
+<details>
 
 ## Public access
+
+<summary>Toggle</summary>
 
 A public-access mirror of this repository containing a subset of files necessary for reproduction is available at: [`insert link here`].
 
 Tags: `cognitive science`, `neuroscience`
+</details>
+
+<details>
 
 ## Citation
+
+<summary>Toggle</summary>
 
 If you use this repository or data, please cite:
 
@@ -125,9 +144,15 @@ If you use this repository or data, please cite:
   recommended_circuit = {citation here}
 }
 ```
+</details>
+
+<details>
 
 ## License
+
+<summary>Toggle</summary>
 
 This project is open source and available under the [MIT License](LICENSE).
 
 README.md templated from [Greta Tuckute](https://github.com/gretatuckute/drive_suppress_brains/blob/main/README.md) and [Guillaume Noblet](https://github.com/gnoblet/TidyTuesday/blob/main/README.md)
+</details>
