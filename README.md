@@ -2,9 +2,11 @@
 
 This is a minimal, structured template for organizing and managing cognitive science projects. It includes a clear directory structure, environment setup scripts, and guidelines for reproducibility.
 
-<details>
-<summary><strong>Project configuration & environment</strong></summary>
+## Project configuration & environment
 
+<details>
+<summary>Show / hide</summary>
+<br>
 **R**: The environment is an R 4.4.1 environment that makes use of [Tidyverse packages](https://www.tidyverse.org/packages/), [{renv}](https://rstudio.github.io/renv/), and [{here}](https://here.r-lib.org), and all dependencies are listed in the `renv.lock` file.
 
 **Python**: Python environment management is handled via conda. The environment uses Python 3.11, and all dependencies are listed in the `env/env_cogsci_template.yml file`. 
@@ -41,9 +43,11 @@ dev/update-dev.sh [R | Python] [refresh--true | refresh--false]
 4.  Open the project file in your IDE (e.g., RStudio | VS Code | Positron) and begin exploring or running the code.
 </details>
 
-<details>
-<summary><strong>Repository structure & pipeline</strong></summary>
+## Repository structure & pipeline
 
+<details>
+<summary>Show / hide</summary>
+<br>
 The repository is structured to facilitate organization and reproducibility. The following is a suggested directory structure.
 
 **NB**: Consider purposefully excluding select files from the external repository for such reasons as file size issues, anonymity concerns, or otherwise. (**NOTE**: bold/italicie scripts, or other files, manually-selected to appear on associated public-access epositories)
@@ -93,23 +97,29 @@ cogsci_project/
 [viz](./viz): Contains automatically and manually produced visualizations (images/plots, figures). Recommended subfolders include `figures` (publication-ready figures), `illustrator` (Adobe Illustrator files), and `images` (plots/images produced by scripts).
 </details>
 
-<details>
-<summary><strong>Project notebook</strong></summary>
+## Project notebook
 
+<details>
+<summary>Show / hide</summary>
+<br>
 A comprehensive supplemental notebook including useful, high-level and technical information related to project conception, data collection, writing, variables of interest, and other collaborative measures is available here: [`insert link here`].
 </details>
 
-<details>
-<summary><strong>Public access</strong></summary>
+## Public access
 
+<details>
+<summary>Show / hide</summary>
+<br>
 A public-access mirror of this repository containing a subset of files necessary for reproduction is available at: [`insert link here`].
 
 Tags: `cognitive science`, `neuroscience`
 </details>
 
-<details>
-<summary><strong>Citation</strong></summary>
+## Citation
 
+<details>
+<summary>Show / hide</summary>
+<br>
 If you use this repository or data, please cite:
 
 ```         
@@ -131,9 +141,11 @@ If you use this repository or data, please cite:
 ```
 </details>
 
-<details>
-<summary><strong>License</strong></summary>
+## License
 
+<details>
+<summary>Show / hide</summary>
+<br>
 This project is open source and available under the [MIT License](LICENSE).
 
 README.md templated from [Greta Tuckute](https://github.com/gretatuckute/drive_suppress_brains/blob/main/README.md) and [Guillaume Noblet](https://github.com/gnoblet/TidyTuesday/blob/main/README.md)
