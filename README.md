@@ -3,10 +3,7 @@
 This is a minimal, structured template for organizing and managing cognitive science projects. It includes a clear directory structure, environment setup scripts, and guidelines for reproducibility.
 
 <details>
-
-## Project configuration & environment
-
-<summary>Toggle</summary>
+<summary><strong>Project configuration & environment</strong></summary>
 
 **R**: The environment is an R 4.4.1 environment that makes use of [Tidyverse packages](https://www.tidyverse.org/packages/), [{renv}](https://rstudio.github.io/renv/), and [{here}](https://here.r-lib.org), and all dependencies are listed in the `renv.lock` file.
 
@@ -45,10 +42,7 @@ dev/update-dev.sh [R | Python] [refresh--true | refresh--false]
 </details>
 
 <details>
-
-## Repository structure & pipeline
-
-<summary>Toggle</summary>
+<summary><strong>Repository structure & pipeline</strong></summary>
 
 The repository is structured to facilitate organization and reproducibility. The following is a suggested directory structure.
 
@@ -100,19 +94,13 @@ cogsci_project/
 </details>
 
 <details>
-
-## Project notebook
-
-<summary>Toggle</summary>
+<summary><strong>Project notebook</strong></summary>
 
 A comprehensive supplemental notebook including useful, high-level and technical information related to project conception, data collection, writing, variables of interest, and other collaborative measures is available here: [`insert link here`].
 </details>
 
 <details>
-
-## Public access
-
-<summary>Toggle</summary>
+<summary><strong>Public access</strong></summary>
 
 A public-access mirror of this repository containing a subset of files necessary for reproduction is available at: [`insert link here`].
 
@@ -120,10 +108,7 @@ Tags: `cognitive science`, `neuroscience`
 </details>
 
 <details>
-
-## Citation
-
-<summary>Toggle</summary>
+<summary><strong>Citation</strong></summary>
 
 If you use this repository or data, please cite:
 
@@ -147,10 +132,7 @@ If you use this repository or data, please cite:
 </details>
 
 <details>
-
-## License
-
-<summary>Toggle</summary>
+<summary><strong>License</strong></summary>
 
 This project is open source and available under the [MIT License](LICENSE).
 
