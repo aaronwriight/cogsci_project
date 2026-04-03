@@ -3,7 +3,10 @@
 This is a minimal, structured template for organizing and managing cognitive science projects. It includes a clear directory structure, environment setup scripts, and guidelines for reproducibility.
 
 <details>
-<summary>## Project configuration & environment</summary>
+
+<summary>Project configuration & environment</summary>
+
+## Project configuration & environment
 
 **R**: The environment is an R 4.4.1 environment that makes use of [Tidyverse packages](https://www.tidyverse.org/packages/), [{renv}](https://rstudio.github.io/renv/), and [{here}](https://here.r-lib.org), and all dependencies are listed in the `renv.lock` file.
 
