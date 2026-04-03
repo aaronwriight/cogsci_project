@@ -2,7 +2,8 @@
 
 This is a minimal, structured template for organizing and managing cognitive science projects. It includes a clear directory structure, environment setup scripts, and guidelines for reproducibility.
 
-## Project configuration & environment
+<details>
+<summary>## Project configuration & environment</summary>
 
 **R**: The environment is an R 4.4.1 environment that makes use of [Tidyverse packages](https://www.tidyverse.org/packages/), [{renv}](https://rstudio.github.io/renv/), and [{here}](https://here.r-lib.org), and all dependencies are listed in the `renv.lock` file.
 
@@ -38,6 +39,7 @@ dev/update-dev.sh [R | Python] [refresh--true | refresh--false]
 ```
 
 4.  Open the project file in your IDE (e.g., RStudio | VS Code | Positron) and begin exploring or running the code.
+</details>
 
 ## Repository structure & pipeline
 
